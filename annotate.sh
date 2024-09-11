@@ -16,7 +16,7 @@ conda activate snpeff
 conda deactivate
 cd annotate/
     for i in `ls *_ann.vcf | sed 's/_ann.vcf//g'`;
-    do bcftools query -f '%CHROM\t%POS\t%ALT\t%ANN\n' ${i}_ann.vcf > ${i}_ann_vars.tab;
+    do bcftools query -f '%CHROM\t%POS\t%ALT[\t%SAMPLE=%ANN]\n' ${i}_ann.vcf > ${i}_ann_vars.tab;
     echo "${i}_ann_var.tab created";
     done
 
